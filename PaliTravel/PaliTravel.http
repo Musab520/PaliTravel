@@ -1,6 +1,9 @@
 @PaliTravel_HostAddress = http://localhost:5245
 
-GET {{PaliTravel_HostAddress}}/weatherforecast/
+POST {{PaliTravel_HostAddress}}/signup
 Accept: application/json
 
 ###
+
+POST {{PaliTravel_HostAddress}}/login
+Accept: application/json

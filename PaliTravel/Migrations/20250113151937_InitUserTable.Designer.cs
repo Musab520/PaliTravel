@@ -12,7 +12,7 @@ using PaliTravel.Data;
 namespace PaliTravel.Migrations
 {
     [DbContext(typeof(Context))]
-    [Migration("20250113104638_InitUserTable")]
+    [Migration("20250113151937_InitUserTable")]
     partial class InitUserTable
     {
         /// <inheritdoc />
@@ -25,7 +25,7 @@ namespace PaliTravel.Migrations
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
 
-            modelBuilder.Entity("PaliTravel.Domain.Model.User", b =>
+            modelBuilder.Entity("PaliTravel.Data.Model.User", b =>
                 {
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
@@ -47,8 +47,9 @@ namespace PaliTravel.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int>("UserRole")
-                        .HasColumnType("int");
+                    b.Property<string>("UserRole")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
 

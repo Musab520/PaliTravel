@@ -3,10 +3,10 @@ using PaliTravel.Domain.Enum;
 
 namespace PaliTravel.Domain.Model;
 
-public class User
+public class UserModel
 {
 
-    public Guid Id { get; set; }
+    public Guid Id { get; set; } = Guid.NewGuid();
     
     public string Email { get; set; } 
     

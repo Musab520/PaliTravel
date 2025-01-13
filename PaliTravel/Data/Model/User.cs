@@ -1,7 +1,9 @@
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace PaliTravel.Data.Model;
 
+[Table("Users")] 
 public class User
 {
     [Key]

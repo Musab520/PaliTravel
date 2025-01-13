@@ -1,5 +1,5 @@
 using Microsoft.EntityFrameworkCore;
-using PaliTravel.Domain.Model;
+using PaliTravel.Data.Model;
 
 namespace PaliTravel.Data;
 
@@ -15,7 +15,7 @@ public class Context : DbContext
     {
         if (!optionsBuilder.IsConfigured)
         {
-            optionsBuilder.UseSqlServer( "Server=localhost,1433;User Id=sa;Password=YourStrongPassword123;Encrypt=False;");
+            optionsBuilder.UseSqlServer( "Server=localhost,1433;UserModel Id=sa;Password=YourStrongPassword123;Encrypt=False;");
         }
     }
     
