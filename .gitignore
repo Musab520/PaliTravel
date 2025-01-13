@@ -1,0 +1,63 @@
+# Rider IDE
+.idea/
+*.sln.iml
+
+# ASP.NET Core
+bin/
+obj/
+**/*.user
+**/*.lock.json
+**/*.log
+**/*.orig
+.vs/
+
+# Build artifacts
+*.dll
+*.exe
+*.so
+*.dylib
+*.class
+*.jar
+*.war
+*.swf
+
+# Logs
+*.log
+
+# User-specific files
+*.suo
+*.user
+*.userosscache
+*.sln.docstates
+
+# Rider-specific
+.idea/
+.idea_modules/
+.idea.workspace
+.idea/inspectionProfiles/
+
+# macOS
+.DS_Store
+.AppleDouble
+.LSOverride
+
+# Windows
+Thumbs.db
+Desktop.ini
+
+# Runtime generated files
+*.db
+*.sqlite
+*.sqlite3
+
+# Configuration files
+appsettings.Development.json
+secrets.json
+
+# Dependencies
+node_modules/
+wwwroot/lib/
+
+# Publish
+publish/
+

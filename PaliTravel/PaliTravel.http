@@ -1,0 +1,6 @@
+@PaliTravel_HostAddress = http://localhost:5245
+
+GET {{PaliTravel_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###

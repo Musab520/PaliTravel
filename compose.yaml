@@ -1,0 +1,45 @@
+﻿version: '3.8'
+
+services:
+  #  palitravel:
+  #    image: palitravel
+  #    build:
+  #      context: .
+  #      dockerfile: PaliTravel/Dockerfile
+  sqlserver:
+    image: mcr.microsoft.com/mssql/server:2022-latest
+    container_name: sqlserver
+    networks:
+      - palitravel
+    environment:
+      - ACCEPT_EULA=Y
+      - SA_PASSWORD=YourStrongPassword123
+      - MSSQL_LOGGING=verbose
+    ports:
+      - "1433:1433"
+    volumes:
+      - sql_data:/var/opt/mssql
+    healthcheck:
+      test: [ "CMD-SHELL", "sqlcmd -S localhost -U sa -P 'YourStrongPassword123' -Q 'SELECT 1'" ]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+#  s3ninja:
+#    image: scireum/s3-ninja:latest
+#    container_name: s3ninja
+#    networks:
+#      - palitravel
+#    environment:
+#      - AWS_ACCESS_KEY_ID=local
+#      - AWS_SECRET_ACCESS_KEY=local
+#    ports:
+#      - "9444:9000"
+#    volumes:
+#      - s3_data:/root/.s3ninja
+
+volumes:
+  sql_data:
+  s3_data:
+networks:
+  palitravel:
