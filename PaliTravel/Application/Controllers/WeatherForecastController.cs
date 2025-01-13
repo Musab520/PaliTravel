@@ -5,6 +5,7 @@ namespace PaliTravel.Application.Controllers;
 
 [ApiController]
 [Authorize]
+
 [Route("api/weather")]
 public class WeatherForecastController : ControllerBase
 {
