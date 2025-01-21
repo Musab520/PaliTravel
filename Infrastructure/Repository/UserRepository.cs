@@ -23,33 +23,40 @@ public class UserRepository : IUserRepository
 
     public void Insert(UserModel user)
     {
-        _userContext.Add(user);
+        User baseUser = _mapper.MapToUser(user);
+        _userContext.Add(baseUser);
         _userContext.SaveChanges();
     }
 
     public void Update(UserModel user)
     {
-        _userContext.Update(user);
+        User baseUser = _mapper.MapToUser(user);
+        _userContext.Update(baseUser);
         _userContext.SaveChanges();
     }
 
     public void Delete(UserModel user)
     {
-        _userContext.Remove(user);
+        User baseUser = _mapper.MapToUser(user);
+        _userContext.Remove(baseUser);
         _userContext.SaveChanges();
     }
 
     public async Task<UserModel?> GetById(Guid id)
     {
         UserModel? user = await _userContext.FindAsync<UserModel>(id);
-
         return user;
     }
 
     public async Task<UserModel?> GetByEmail(string email)
     {
         User? user = await _userContext.Users.SingleOrDefaultAsync(u => u.Email == email);
-        UserModel userModel = _mapper.MapToModel(user);
-        return userModel;
+        if (user != null)
+        {
+            UserModel userModel = _mapper.MapToModel(user);
+            return userModel;
+        }
+
+        return null;
     }
 }

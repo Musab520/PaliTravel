@@ -8,5 +8,5 @@ public interface IUserService
     void Update(UserModel userModel);
     void Delete(UserModel userModel);
     UserModel GetById(int id);
-    Task<UserModel> GetByEmail(string email);
+    Task<UserModel?> GetByEmail(string email);
 }
