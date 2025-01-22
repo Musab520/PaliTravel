@@ -35,12 +35,18 @@ public class Program
         // Add services to the container
         builder.Services.AddScoped<ModelToUserMapper>();
         builder.Services.AddScoped<ModelToUserDtoMapper>();
+        builder.Services.AddScoped<ModelToCityDtoMapper>();
+        builder.Services.AddScoped<ModelToCityMapper>();
         builder.Services.AddScoped<IPasswordHasher<UserModel>, PasswordHasher<UserModel>>();
         builder.Services.AddScoped<IUserRepository, UserRepository>();
         builder.Services.AddScoped<IUserService, UserService>();
+        builder.Services.AddScoped<ICityRepository, CityRepository>();
+        builder.Services.AddScoped<ICityService, CityService>();
 
         //Add Validation
         builder.Services.AddScoped<IValidator<UserModel>, UserValidator>();
+        builder.Services.AddScoped<IValidator<CityModel>, CityValidator>();
+
         //Add Auth
         builder.Services.AddAuthentication("Bearer").AddJwtBearer(options =>
         {

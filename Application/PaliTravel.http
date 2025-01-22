@@ -7,3 +7,8 @@ Accept: application/json
 
 POST {{PaliTravel_HostAddress}}/login
 Accept: application/json
+
+###
+
+POST {{PaliTravel_HostAddress}}/city
+Accept: application/json
