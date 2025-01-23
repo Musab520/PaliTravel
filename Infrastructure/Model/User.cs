@@ -24,5 +24,5 @@ public class User
     public string LastName { get; set; } = string.Empty;
 
     [Required]
-    public string UserRole { get; set; } = "User";
+    public string UserRole { get; set; }
 }
