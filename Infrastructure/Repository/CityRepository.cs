@@ -17,11 +17,17 @@ public class CityRepository : ICityRepository
 
     }
 
-    public void Insert(CityModel city)
+    public async Task<CityModel?> Insert(CityModel city)
     {
         City baseCity = _mapper.MapToCity(city);
-        _cityContext.Add(baseCity);
-        _cityContext.SaveChanges();
+
+        await _cityContext.AddAsync(baseCity);
+
+        await _cityContext.SaveChangesAsync();
+
+        CityModel cityModel = _mapper.MapToModel(baseCity);
+
+        return cityModel;
     }
 
     public void Update(CityModel city)

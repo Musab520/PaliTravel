@@ -28,12 +28,17 @@ public class CityController : Controller
     public async Task<ActionResult<Boolean>> CreateCity(CityUpsertDto cityUpsertDto) {
         CityModel cityModel = _mapper.MapUpsertToModel(cityUpsertDto);
         var modelState = _validator.Validate(cityModel);
-        if (modelState.IsValid)
+        if (!modelState.IsValid)
         {
-            return Ok(cityModel);
+            return BadRequest(modelState);
         }
-        
-        return BadRequest(modelState);
+
+        CityModel? cityModelNew = await _cityService.Insert(cityModel);
+        if (cityModelNew == null)
+        {
+            return BadRequest(new { Message = "Hotel insertion failed. Please try again." });
+        }
+        return Ok(cityModelNew);
     }
 
 }

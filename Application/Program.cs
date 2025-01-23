@@ -37,15 +37,20 @@ public class Program
         builder.Services.AddScoped<ModelToUserDtoMapper>();
         builder.Services.AddScoped<ModelToCityDtoMapper>();
         builder.Services.AddScoped<ModelToCityMapper>();
+        builder.Services.AddScoped<ModelToHotelDtoMapper>();
+        builder.Services.AddScoped<ModelToHotelMapper>();
         builder.Services.AddScoped<IPasswordHasher<UserModel>, PasswordHasher<UserModel>>();
         builder.Services.AddScoped<IUserRepository, UserRepository>();
         builder.Services.AddScoped<IUserService, UserService>();
         builder.Services.AddScoped<ICityRepository, CityRepository>();
         builder.Services.AddScoped<ICityService, CityService>();
+        builder.Services.AddScoped<IHotelRepository, HotelRepository>();
+        builder.Services.AddScoped<IHotelService, HotelService>();
 
         //Add Validation
         builder.Services.AddScoped<IValidator<UserModel>, UserValidator>();
         builder.Services.AddScoped<IValidator<CityModel>, CityValidator>();
+        builder.Services.AddScoped<IValidator<HotelModel>, HotelValidator>();
 
         //Add Auth
         builder.Services.AddAuthentication("Bearer").AddJwtBearer(options =>

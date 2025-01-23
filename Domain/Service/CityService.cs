@@ -14,9 +14,9 @@ public class CityService : ICityService
         _cityRepository = cityRepository ?? throw new ArgumentNullException(nameof(cityRepository));
     }
     
-    public void Insert(CityModel cityModel)
+    public async Task<CityModel?> Insert(CityModel cityModel)
     {
-        _cityRepository.Insert(cityModel);
+        return await _cityRepository.Insert(cityModel);
     }
 
     public void Update(CityModel cityModel)
