@@ -9,7 +9,13 @@ public class Context : DbContext
 
     public Context(DbContextOptions<Context> options) : base(options) { }
     public DbSet<User> Users { get; set; }
-
+    public DbSet<City> City { get; set; }
+    public DbSet<Hotel> Hotel { get; set; }
+    public DbSet<Room> Room { get; set; }
+    public DbSet<Reservation> Reservation { get; set; }
+    public DbSet<Deal> Deal { get; set; }
+    public DbSet<Confirmation> Confirmation { get; set; }
+    
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
     {
         if (!optionsBuilder.IsConfigured)

@@ -1,8 +1,7 @@
-namespace Application.DTOModels;
+namespace Application.DTOModels.User;
 
-public class UserDto
+public class UserUpsertDto
 {
-    public int UserId { get; set; }
     public string Email { get; set; }
     public string Password { get; set; }
     public string? FirstName { get; set; }
