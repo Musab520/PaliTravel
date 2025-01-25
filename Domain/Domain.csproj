@@ -10,6 +10,7 @@
     <ItemGroup>
       <PackageReference Include="AutoMapper" Version="13.0.1" />
       <PackageReference Include="Riok.Mapperly" Version="4.2.0-next.0" />
+      <PackageReference Include="Sieve" Version="2.5.5" />
     </ItemGroup>
 
 </Project>

@@ -12,6 +12,7 @@ using Domain.IService;
 using Domain.Model;
 using Domain.Service;
 using Infrastructure.Mapper;
+using Sieve.Services;
 
 namespace Application;
 
@@ -47,6 +48,7 @@ public class Program
         builder.Services.AddScoped<ModelToDealMapper>();
         builder.Services.AddScoped<ModelToConfirmationDtoMapper>();
         builder.Services.AddScoped<ModelToConfirmationMapper>();
+        builder.Services.AddScoped<ModelToAvailableRoomMapper>();
         builder.Services.AddScoped<IPasswordHasher<UserModel>, PasswordHasher<UserModel>>();
         builder.Services.AddScoped<IUserRepository, UserRepository>();
         builder.Services.AddScoped<IUserService, UserService>();
@@ -63,6 +65,7 @@ public class Program
         builder.Services.AddScoped<IConfirmationRepository, ConfirmationRepository>();
         builder.Services.AddScoped<IConfirmationService, ConfirmationService>();
         builder.Services.AddScoped<DatabaseSeeder>();
+        builder.Services.AddScoped<SieveProcessor>();
 
         //Add Validation
         builder.Services.AddScoped<IValidator<UserModel>, UserValidator>();

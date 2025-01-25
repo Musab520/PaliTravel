@@ -8,4 +8,7 @@ public interface IRoomService
     void Update(RoomModel roomModel);
     void Delete(RoomModel roomModel);
     RoomModel GetById(int id);
+    
+    Task<List<AvailableRoomModel?>> GetAvailableRoomsAsync(AvailableRoomSieveModel sieveModel);
+
 }

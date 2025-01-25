@@ -8,4 +8,6 @@ public interface IRoomRepository
     void Update(RoomModel room);
     void Delete(RoomModel room);
     Task<RoomModel?> GetById(Guid id);
+    
+    Task<List<AvailableRoomModel?>> GetAvailableRoomsAsync(AvailableRoomSieveModel sieveModel);
 }

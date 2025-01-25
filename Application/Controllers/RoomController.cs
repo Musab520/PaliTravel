@@ -41,5 +41,16 @@ public class RoomController : Controller
         }
         return Ok(roomModelNew);
     }
+    
+    [HttpGet("available")]
+    public async Task<IActionResult> GetAvailableRooms([FromQuery] AvailableRoomSieveModel sieveModel)
+    {
+        // Call the service method to get available rooms with Sieve applied
+        List<AvailableRoomModel?> rooms = await _roomService.GetAvailableRoomsAsync(sieveModel);
+        if (!rooms.Any()) {
+            return BadRequest(new { Message = "An error occured fetching rooms. Please try again." });
+        }
+        return Ok(rooms);
+    }
 
 }
