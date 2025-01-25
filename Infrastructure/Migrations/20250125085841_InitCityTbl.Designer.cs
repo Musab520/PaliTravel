@@ -9,10 +9,10 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
 
-namespace PaliTravel.Migrations
+namespace Infrastructure.Migrations
 {
     [DbContext(typeof(Context))]
-    [Migration("20250122143452_InitCityTbl")]
+    [Migration("20250125085841_InitCityTbl")]
     partial class InitCityTbl
     {
         /// <inheritdoc />
@@ -52,37 +52,6 @@ namespace PaliTravel.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("City");
-                });
-
-            modelBuilder.Entity("Infrastructure.Model.User", b =>
-                {
-                    b.Property<Guid>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("uniqueidentifier");
-
-                    b.Property<string>("Email")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("FirstName")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("LastName")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("PasswordHash")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("UserRole")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("Users");
                 });
 #pragma warning restore 612, 618
         }

@@ -23,28 +23,28 @@ public class ReservationRepository : IReservationRepository
     {
         Reservation baseReservation = _mapper.MapToReservation(reservation);
         Room? room = await _reserveContext.Room.FindAsync(reservation.RoomId);
-
+        
         if (room == null)
         {
             return null;
         }
-
+        
         if (room.Availability != Availability.Free.ToString())
         {
             return null;
         }
-
+        
         using var transaction = await _reserveContext.Database.BeginTransactionAsync();
-
+        
         try
         {
             room.Availability = Availability.Reserved.ToString();
             baseReservation.PricePurchased = room.Price;
             _reserveContext.Room.Update(room);
-
+        
             await _reserveContext.Reservation.AddAsync(baseReservation);
             await _reserveContext.SaveChangesAsync();
-
+        
             await transaction.CommitAsync();
         }
         catch (Exception ex)
@@ -52,7 +52,7 @@ public class ReservationRepository : IReservationRepository
             await transaction.RollbackAsync();
             throw;
         }
-
+        
         return _mapper.MapToModel(baseReservation);
     }
 

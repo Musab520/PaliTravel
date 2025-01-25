@@ -9,10 +9,10 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
 
-namespace PaliTravel.Migrations
+namespace Infrastructure.Migrations
 {
     [DbContext(typeof(Context))]
-    [Migration("20250122164033_InitHotelTbl")]
+    [Migration("20250125090005_InitHotelTbl")]
     partial class InitHotelTbl
     {
         /// <inheritdoc />
@@ -80,9 +80,8 @@ namespace PaliTravel.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("StarRating")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                    b.Property<int>("StarRating")
+                        .HasColumnType("int");
 
                     b.Property<DateTime>("UpdateDate")
                         .HasColumnType("datetime2");
@@ -90,37 +89,6 @@ namespace PaliTravel.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Hotel");
-                });
-
-            modelBuilder.Entity("Infrastructure.Model.User", b =>
-                {
-                    b.Property<Guid>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("uniqueidentifier");
-
-                    b.Property<string>("Email")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("FirstName")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("LastName")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("PasswordHash")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("UserRole")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("Users");
                 });
 #pragma warning restore 612, 618
         }

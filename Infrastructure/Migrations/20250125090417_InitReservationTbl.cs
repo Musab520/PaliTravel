@@ -2,7 +2,7 @@
 
 #nullable disable
 
-namespace PaliTravel.Migrations
+namespace Infrastructure.Migrations
 {
     
     public partial class InitReservationTbl : Migration

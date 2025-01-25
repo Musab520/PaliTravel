@@ -4,6 +4,7 @@ using Infrastructure;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Infrastructure.Migrations
 {
     [DbContext(typeof(Context))]
-    partial class ContextModelSnapshot : ModelSnapshot
+    [Migration("20250125093811_InitUserTbl")]
+    partial class InitUserTbl
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -48,7 +51,7 @@ namespace Infrastructure.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("City", (string)null);
+                    b.ToTable("City");
                 });
 
             modelBuilder.Entity("Infrastructure.Model.Deal", b =>
@@ -75,12 +78,12 @@ namespace Infrastructure.Migrations
                     b.Property<DateTime>("ToDate")
                         .HasColumnType("datetime2");
 
-                    b.Property<DateTime>("UpdateOn")
+                    b.Property<DateTime>("UpdateDate")
                         .HasColumnType("datetime2");
 
                     b.HasKey("Id");
 
-                    b.ToTable("Deal", (string)null);
+                    b.ToTable("Deal");
                 });
 
             modelBuilder.Entity("Infrastructure.Model.Hotel", b =>
@@ -117,7 +120,7 @@ namespace Infrastructure.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Hotel", (string)null);
+                    b.ToTable("Hotel");
                 });
 
             modelBuilder.Entity("Infrastructure.Model.Reservation", b =>
@@ -149,7 +152,7 @@ namespace Infrastructure.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Reservation", (string)null);
+                    b.ToTable("Reservation");
                 });
 
             modelBuilder.Entity("Infrastructure.Model.Room", b =>
@@ -185,7 +188,7 @@ namespace Infrastructure.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Room", (string)null);
+                    b.ToTable("Room");
                 });
 
             modelBuilder.Entity("Infrastructure.Model.User", b =>
@@ -216,7 +219,7 @@ namespace Infrastructure.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Users", (string)null);
+                    b.ToTable("Users");
                 });
 #pragma warning restore 612, 618
         }

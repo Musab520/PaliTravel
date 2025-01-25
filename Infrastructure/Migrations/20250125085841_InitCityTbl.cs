@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 #nullable disable
 
-namespace PaliTravel.Migrations
+namespace Infrastructure.Migrations
 {
     /// <inheritdoc />
     public partial class InitCityTbl : Migration
@@ -18,7 +18,7 @@ namespace PaliTravel.Migrations
                                  "PostOffice NVARCHAR(MAX) NULL, " +
                                  "CreatedOn DATETIME2 NULL, " +
                                  "UpdateDate DATETIME2 NULL" + 
-                                ");");
+                                 ");");
         }
 
         /// <inheritdoc />

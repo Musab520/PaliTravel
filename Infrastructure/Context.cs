@@ -13,6 +13,7 @@ public class Context : DbContext
     public DbSet<Hotel> Hotel { get; set; }
     public DbSet<Room> Room { get; set; }
     public DbSet<Reservation> Reservation { get; set; }
+    public DbSet<Deal> Deal { get; set; }
 
     
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)

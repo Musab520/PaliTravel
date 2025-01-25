@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 #nullable disable
 
-namespace PaliTravel.Migrations
+namespace Infrastructure.Migrations
 {
     /// <inheritdoc />
     public partial class InitHotelTbl : Migration
@@ -21,7 +21,7 @@ namespace PaliTravel.Migrations
                                  "CreatedOn DATETIME2 NOT NULL, " +
                                  "UpdateDate DATETIME2 NOT NULL," + 
                                  "CONSTRAINT FK_Hotel_CityId FOREIGN KEY (CityId) REFERENCES City(Id)" +
-                                ");");
+                                 ");");
         }
 
         /// <inheritdoc />

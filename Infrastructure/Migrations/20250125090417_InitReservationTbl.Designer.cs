@@ -9,11 +9,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
 
-namespace PaliTravel.Migrations
+namespace Infrastructure.Migrations
 {
     [DbContext(typeof(Context))]
-    [Migration("20250123110356_AddOwnerColumnInHotel")]
-    partial class AddOwnerColumnInHotel
+    [Migration("20250125090417_InitReservationTbl")]
+    partial class InitReservationTbl
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -91,35 +91,72 @@ namespace PaliTravel.Migrations
                     b.ToTable("Hotel");
                 });
 
-            modelBuilder.Entity("Infrastructure.Model.User", b =>
+            modelBuilder.Entity("Infrastructure.Model.Reservation", b =>
                 {
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("uniqueidentifier");
 
-                    b.Property<string>("Email")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                    b.Property<DateTime>("CheckIn")
+                        .HasColumnType("datetime2");
 
-                    b.Property<string>("FirstName")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                    b.Property<DateTime>("CheckOut")
+                        .HasColumnType("datetime2");
 
-                    b.Property<string>("LastName")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                    b.Property<DateTime>("CreatedOn")
+                        .HasColumnType("datetime2");
 
-                    b.Property<string>("PasswordHash")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                    b.Property<Guid>("HotelId")
+                        .HasColumnType("uniqueidentifier");
 
-                    b.Property<string>("UserRole")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                    b.Property<decimal>("PricePurchased")
+                        .HasColumnType("decimal(18,2)");
+
+                    b.Property<Guid>("RoomId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<DateTime>("UpdateOn")
+                        .HasColumnType("datetime2");
 
                     b.HasKey("Id");
 
-                    b.ToTable("Users");
+                    b.ToTable("Reservation");
+                });
+
+            modelBuilder.Entity("Infrastructure.Model.Room", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<int>("AdultCapacity")
+                        .HasColumnType("int");
+
+                    b.Property<string>("Availability")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("ChildCapacity")
+                        .HasColumnType("int");
+
+                    b.Property<DateTime>("CreatedOn")
+                        .HasColumnType("datetime2");
+
+                    b.Property<Guid>("HotelId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<decimal>("Price")
+                        .HasColumnType("decimal(18,2)");
+
+                    b.Property<int>("RoomNumber")
+                        .HasColumnType("int");
+
+                    b.Property<DateTime>("UpdateDate")
+                        .HasColumnType("datetime2");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Room");
                 });
 #pragma warning restore 612, 618
         }

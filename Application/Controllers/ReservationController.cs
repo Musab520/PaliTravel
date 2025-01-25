@@ -34,7 +34,7 @@ public class ReservationController : Controller
             return BadRequest(modelState);
         }
 
-        ReservationModel? reservationModelNew = await _reservationService.Reserve(reservationModel);
+        ReservationModel? reservationModelNew = await _reservationService.Insert(reservationModel);
         if (reservationModelNew == null)
         {
             return BadRequest(new { Message = "Reservation insertion failed. Please try again." });

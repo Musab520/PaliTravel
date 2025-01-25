@@ -1,6 +1,6 @@
 namespace Domain.Model;
 
-public class ReservationModel
+public class DealModel
 {
     public Guid Id { get; set; } = Guid.NewGuid();
     
@@ -8,13 +8,13 @@ public class ReservationModel
     
     public Guid HotelId { get; set; }
     
-    public DateTime CheckIn { get; set; }
+    public DateTime FromDate { get; set; }
     
-    public DateTime CheckOut { get; set; }
+    public DateTime ToDate { get; set; }
 
     public DateTime CreatedOn { get; set; }
     
     public DateTime UpdateOn { get; set; }
     
-    public double PricePurchased { get; set; }
+    public double Discount { get; set; }
 }

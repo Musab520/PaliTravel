@@ -9,11 +9,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
 
-namespace PaliTravel.Migrations
+namespace Infrastructure.Migrations
 {
     [DbContext(typeof(Context))]
-    [Migration("20250124230046_InitReservationTbl")]
-    partial class InitReservationTbl
+    [Migration("20250125091621_InitDealTbl")]
+    partial class InitDealTbl
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -52,6 +52,38 @@ namespace PaliTravel.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("City");
+                });
+
+            modelBuilder.Entity("Infrastructure.Model.Deal", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<DateTime>("CreatedOn")
+                        .HasColumnType("datetime2");
+
+                    b.Property<double>("Discount")
+                        .HasColumnType("float");
+
+                    b.Property<DateTime>("FromDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<Guid>("HotelId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<Guid>("RoomId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<DateTime>("ToDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<DateTime>("UpdateOn")
+                        .HasColumnType("datetime2");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Deal");
                 });
 
             modelBuilder.Entity("Infrastructure.Model.Hotel", b =>
@@ -109,8 +141,8 @@ namespace PaliTravel.Migrations
                     b.Property<Guid>("HotelId")
                         .HasColumnType("uniqueidentifier");
 
-                    b.Property<double>("PricePurchased")
-                        .HasColumnType("float");
+                    b.Property<decimal>("PricePurchased")
+                        .HasColumnType("decimal(18,2)");
 
                     b.Property<Guid>("RoomId")
                         .HasColumnType("uniqueidentifier");
@@ -145,8 +177,8 @@ namespace PaliTravel.Migrations
                     b.Property<Guid>("HotelId")
                         .HasColumnType("uniqueidentifier");
 
-                    b.Property<double>("Price")
-                        .HasColumnType("float");
+                    b.Property<decimal>("Price")
+                        .HasColumnType("decimal(18,2)");
 
                     b.Property<int>("RoomNumber")
                         .HasColumnType("int");
@@ -157,37 +189,6 @@ namespace PaliTravel.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Room");
-                });
-
-            modelBuilder.Entity("Infrastructure.Model.User", b =>
-                {
-                    b.Property<Guid>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("uniqueidentifier");
-
-                    b.Property<string>("Email")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("FirstName")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("LastName")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("PasswordHash")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("UserRole")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("Users");
                 });
 #pragma warning restore 612, 618
         }

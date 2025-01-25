@@ -2,7 +2,7 @@
 
 #nullable disable
 
-namespace PaliTravel.Migrations
+namespace Infrastructure.Migrations
 {
     /// <inheritdoc />
     public partial class ChangeRatingType : Migration
