@@ -21,12 +21,25 @@ IF NOT EXISTS (SELECT 1 FROM Users WHERE Email = 'john.doe@example.com')
     -- Inserting data into the Room table
     INSERT INTO Room (Id, HotelId, RoomNumber, Availability, AdultCapacity, ChildCapacity, Price, CreatedOn, UpdateOn)
     VALUES
-        (NEWID(), (SELECT Id FROM Hotel WHERE Name = 'Hotel Central'), 101, 'Available', 2, 1, 200.00, GETDATE(), GETDATE()),
-        (NEWID(), (SELECT Id FROM Hotel WHERE Name = 'Luxury Stay'), 201, 'Available', 2, 2, 250.00, GETDATE(), GETDATE());
+        (NEWID(), (SELECT Id FROM Hotel WHERE Name = 'Hotel Central'), 101, 'Free', 2, 1, 200.00, GETDATE(), GETDATE()),
+        (NEWID(), (SELECT Id FROM Hotel WHERE Name = 'Luxury Stay'), 111, 'Free', 2, 1, 200.00, GETDATE(), GETDATE()),
+        (NEWID(), (SELECT Id FROM Hotel WHERE Name = 'Hotel Central'), 201, 'Free', 2, 2, 250.00, GETDATE(), GETDATE()),
+        (NEWID(), (SELECT Id FROM Hotel WHERE Name = 'Luxury Stay'), 222, 'Free', 2, 2, 250.00, GETDATE(), GETDATE());
     
     -- Inserting data into the Deal table
     INSERT INTO Deal (Id, RoomId, FromDate, ToDate, Discount, CreatedOn, UpdateOn)
     VALUES
         (NEWID(), (SELECT Id FROM Room WHERE RoomNumber = 101), '2025-02-01', '2025-02-10', 0.15, GETDATE(), GETDATE()),
         (NEWID(), (SELECT Id FROM Room WHERE RoomNumber = 201), '2025-03-01', '2025-03-15', 0.10, GETDATE(), GETDATE());
+
+    INSERT INTO Reservation (Id, RoomId, DealId, CheckIn, CheckOut, PricePurchased, CreatedOn, UpdateOn)
+    VALUES
+        (NEWID(), (SELECT Id FROM Room WHERE RoomNumber = 101), (SELECT Id FROM Deal WHERE RoomId = (SELECT Id FROM Room WHERE RoomNumber = 101)), '2025-07-01', '2025-07-05', 262.50, GETDATE(), GETDATE()),
+        (NEWID(), (SELECT Id FROM Room WHERE RoomNumber = 201), (SELECT Id FROM Deal WHERE RoomId = (SELECT Id FROM Room WHERE RoomNumber = 201)), '2025-08-01', '2025-08-05', 184.80, GETDATE(), GETDATE());
+
+-- Inserting data into the Confirmation table
+    INSERT INTO Confirmation (Id, ConfirmationNumber, ReservationId, DealId, CreatedOn, UpdateOn)
+    VALUES
+        (NEWID(), NEWID(), (SELECT Id FROM Reservation WHERE RoomId = (SELECT Id FROM Room WHERE RoomNumber = 101)), (SELECT Id FROM Deal WHERE RoomId = (SELECT Id FROM Room WHERE RoomNumber = 101)), GETDATE(), GETDATE()),
+        (NEWID(), NEWID(), (SELECT Id FROM Reservation WHERE RoomId = (SELECT Id FROM Room WHERE RoomNumber = 201)), (SELECT Id FROM Deal WHERE RoomId = (SELECT Id FROM Room WHERE RoomNumber = 201)), GETDATE(), GETDATE());
 END
