@@ -12,9 +12,6 @@ public class Reservation
     public Guid RoomId { get; set; }
     
     [Required]
-    public Guid HotelId { get; set; }
-    
-    [Required]
     public DateTime CheckIn { get; set; }
     
     [Required]

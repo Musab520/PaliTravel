@@ -29,5 +29,5 @@ public class Hotel
     
     public DateTime CreatedOn { get; set; } = new DateTime();
 
-    public DateTime UpdateDate { get; set; } = new DateTime();
+    public DateTime UpdateOn { get; set; } = new DateTime();
 }

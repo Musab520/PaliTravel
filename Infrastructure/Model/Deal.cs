@@ -12,9 +12,6 @@ public class Deal
     public Guid RoomId { get; set; }
     
     [Required]
-    public Guid HotelId { get; set; }
-    
-    [Required]
     public double Discount { get; set; }
     
     [Required]

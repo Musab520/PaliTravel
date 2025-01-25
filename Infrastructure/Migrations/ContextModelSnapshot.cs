@@ -43,12 +43,38 @@ namespace Infrastructure.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<DateTime>("UpdateDate")
+                    b.Property<DateTime>("UpdateOn")
                         .HasColumnType("datetime2");
 
                     b.HasKey("Id");
 
-                    b.ToTable("City", (string)null);
+                    b.ToTable("City");
+                });
+
+            modelBuilder.Entity("Infrastructure.Model.Confirmation", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<Guid>("ConfirmationNumber")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<DateTime>("CreatedOn")
+                        .HasColumnType("datetime2");
+
+                    b.Property<Guid>("DealId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<Guid>("ReservationId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<DateTime>("UpdateOn")
+                        .HasColumnType("datetime2");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Confirmation");
                 });
 
             modelBuilder.Entity("Infrastructure.Model.Deal", b =>
@@ -66,9 +92,6 @@ namespace Infrastructure.Migrations
                     b.Property<DateTime>("FromDate")
                         .HasColumnType("datetime2");
 
-                    b.Property<Guid>("HotelId")
-                        .HasColumnType("uniqueidentifier");
-
                     b.Property<Guid>("RoomId")
                         .HasColumnType("uniqueidentifier");
 
@@ -80,7 +103,7 @@ namespace Infrastructure.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Deal", (string)null);
+                    b.ToTable("Deal");
                 });
 
             modelBuilder.Entity("Infrastructure.Model.Hotel", b =>
@@ -112,12 +135,12 @@ namespace Infrastructure.Migrations
                     b.Property<int>("StarRating")
                         .HasColumnType("int");
 
-                    b.Property<DateTime>("UpdateDate")
+                    b.Property<DateTime>("UpdateOn")
                         .HasColumnType("datetime2");
 
                     b.HasKey("Id");
 
-                    b.ToTable("Hotel", (string)null);
+                    b.ToTable("Hotel");
                 });
 
             modelBuilder.Entity("Infrastructure.Model.Reservation", b =>
@@ -135,9 +158,6 @@ namespace Infrastructure.Migrations
                     b.Property<DateTime>("CreatedOn")
                         .HasColumnType("datetime2");
 
-                    b.Property<Guid>("HotelId")
-                        .HasColumnType("uniqueidentifier");
-
                     b.Property<decimal>("PricePurchased")
                         .HasColumnType("decimal(18,2)");
 
@@ -149,7 +169,7 @@ namespace Infrastructure.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Reservation", (string)null);
+                    b.ToTable("Reservation");
                 });
 
             modelBuilder.Entity("Infrastructure.Model.Room", b =>
@@ -180,12 +200,12 @@ namespace Infrastructure.Migrations
                     b.Property<int>("RoomNumber")
                         .HasColumnType("int");
 
-                    b.Property<DateTime>("UpdateDate")
+                    b.Property<DateTime>("UpdateOn")
                         .HasColumnType("datetime2");
 
                     b.HasKey("Id");
 
-                    b.ToTable("Room", (string)null);
+                    b.ToTable("Room");
                 });
 
             modelBuilder.Entity("Infrastructure.Model.User", b =>
@@ -216,7 +236,7 @@ namespace Infrastructure.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Users", (string)null);
+                    b.ToTable("Users");
                 });
 #pragma warning restore 612, 618
         }

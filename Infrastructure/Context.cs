@@ -14,7 +14,7 @@ public class Context : DbContext
     public DbSet<Room> Room { get; set; }
     public DbSet<Reservation> Reservation { get; set; }
     public DbSet<Deal> Deal { get; set; }
-
+    public DbSet<Confirmation> Confirmation { get; set; }
     
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
     {

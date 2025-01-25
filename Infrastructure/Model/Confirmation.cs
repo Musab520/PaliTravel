@@ -1,25 +1,23 @@
 using System.ComponentModel.DataAnnotations;
-using System.ComponentModel.DataAnnotations.Schema;
-
 
 namespace Infrastructure.Model;
 
-[Table("City")] 
-public class City
+public class Confirmation
 {
     [Key]
     [Required]
     public Guid Id { get; set; }
-
+    
     [Required]
-    public string Name { get; set; } 
-
+    public Guid ReservationId { get; set; }
+    
     [Required]
-    public string Country { get; set; } = string.Empty;
-
-    public string PostOffice { get; set; } = string.Empty;
+    public Guid DealId { get; set; }
+    
+    [Required]
+    public Guid ConfirmationNumber{ get; set; } = Guid.NewGuid();
 
     public DateTime CreatedOn { get; set; } = new DateTime();
-
+    
     public DateTime UpdateOn { get; set; } = new DateTime();
 }

@@ -45,6 +45,8 @@ public class Program
         builder.Services.AddScoped<ModelToReservationMapper>();
         builder.Services.AddScoped<ModelToDealDtoMapper>();
         builder.Services.AddScoped<ModelToDealMapper>();
+        builder.Services.AddScoped<ModelToConfirmationDtoMapper>();
+        builder.Services.AddScoped<ModelToConfirmationMapper>();
         builder.Services.AddScoped<IPasswordHasher<UserModel>, PasswordHasher<UserModel>>();
         builder.Services.AddScoped<IUserRepository, UserRepository>();
         builder.Services.AddScoped<IUserService, UserService>();
@@ -58,6 +60,9 @@ public class Program
         builder.Services.AddScoped<IReservationService, ReservationService>();
         builder.Services.AddScoped<IDealRepository, DealRepository>();
         builder.Services.AddScoped<IDealService, DealService>();
+        builder.Services.AddScoped<IConfirmationRepository, ConfirmationRepository>();
+        builder.Services.AddScoped<IConfirmationService, ConfirmationService>();
+        builder.Services.AddScoped<DatabaseSeeder>();
 
         //Add Validation
         builder.Services.AddScoped<IValidator<UserModel>, UserValidator>();
@@ -66,6 +71,8 @@ public class Program
         builder.Services.AddScoped<IValidator<RoomModel>, RoomValidator>();
         builder.Services.AddScoped<IValidator<ReservationModel>, ReservationValidator>();
         builder.Services.AddScoped<IValidator<DealModel>, DealValidator>();
+        builder.Services.AddScoped<IValidator<ConfirmationModel>, ConfirmationValidator>();
+
 
 
 
@@ -95,6 +102,11 @@ public class Program
         {
             app.UseSwagger();
             app.UseSwaggerUI();
+            using (var scope = app.Services.CreateScope())
+            {
+                var seeder = scope.ServiceProvider.GetRequiredService<DatabaseSeeder>();
+                seeder.SeedDataAsync().Wait();
+            }
         }
 
         app.UseHttpsRedirection();
