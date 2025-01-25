@@ -1,3 +1,5 @@
+using Domain.Enum;
+
 namespace Domain.Model;
 
 public class RoomModel
@@ -8,7 +10,7 @@ public class RoomModel
     
     public int RoomNumber { get; set; }
     
-    public string Availability { get; set; }
+    public Availability Availability { get; set; }
 
     public int AdultCapacity { get; set; } = 3;
 

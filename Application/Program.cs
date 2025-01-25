@@ -41,6 +41,8 @@ public class Program
         builder.Services.AddScoped<ModelToHotelMapper>();
         builder.Services.AddScoped<ModelToRoomDtoMapper>();
         builder.Services.AddScoped<ModelToRoomMapper>();
+        builder.Services.AddScoped<ModelToReservationDtoMapper>();
+        builder.Services.AddScoped<ModelToReservationMapper>();
         builder.Services.AddScoped<IPasswordHasher<UserModel>, PasswordHasher<UserModel>>();
         builder.Services.AddScoped<IUserRepository, UserRepository>();
         builder.Services.AddScoped<IUserService, UserService>();
@@ -50,12 +52,16 @@ public class Program
         builder.Services.AddScoped<IHotelService, HotelService>();
         builder.Services.AddScoped<IRoomRepository, RoomRepository>();
         builder.Services.AddScoped<IRoomService, RoomService>();
+        builder.Services.AddScoped<IReservationRepository, ReservationRepository>();
+        builder.Services.AddScoped<IReservationService, ReservationService>();
 
         //Add Validation
         builder.Services.AddScoped<IValidator<UserModel>, UserValidator>();
         builder.Services.AddScoped<IValidator<CityModel>, CityValidator>();
         builder.Services.AddScoped<IValidator<HotelModel>, HotelValidator>();
         builder.Services.AddScoped<IValidator<RoomModel>, RoomValidator>();
+        builder.Services.AddScoped<IValidator<ReservationModel>, ReservationValidator>();
+
 
 
         //Add Auth

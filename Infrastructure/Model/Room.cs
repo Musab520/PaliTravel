@@ -24,7 +24,7 @@ public class Room
     public int ChildCapacity { get; set; } = 2;
 
     [Required]
-    public double Price { get; set; }
+    public decimal Price { get; set; }
     
     public DateTime CreatedOn { get; set; } = new DateTime();
 

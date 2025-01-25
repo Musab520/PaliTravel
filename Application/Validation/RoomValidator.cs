@@ -1,3 +1,4 @@
+using Domain.Enum;
 using Domain.Model;
 using FluentValidation;
 
@@ -12,9 +13,9 @@ public class RoomValidator : AbstractValidator<RoomModel>
         
         RuleFor(room => room.RoomNumber)
             .NotEmpty().WithMessage("Room Number is required.");
-        
+
         RuleFor(room => room.Availability)
-            .NotEmpty().WithMessage("Availability is required.");
+            .IsInEnum().WithMessage("Availability must be a valid value.");
         
         RuleFor(room => room.Price)
             .NotEmpty().WithMessage("Price is required.");

@@ -38,7 +38,7 @@ public class HotelController : Controller
         {
             return BadRequest(new { Message = "Hotel insertion failed. Please try again." });
         }
-        return Ok(hotelModel);
+        return Ok(hotelModelNew);
     }
 
 }

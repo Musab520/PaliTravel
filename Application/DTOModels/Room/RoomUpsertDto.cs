@@ -1,6 +1,6 @@
 using Microsoft.AspNetCore.Mvc;
 
-namespace Application.DTOModels.Hotel;
+namespace Application.DTOModels.Room;
 
 public class RoomUpsertDto
 {

@@ -39,7 +39,7 @@ public class RoomController : Controller
         {
             return BadRequest(new { Message = "Room insertion failed. Please try again." });
         }
-        return Ok(roomModel);
+        return Ok(roomModelNew);
     }
 
 }
