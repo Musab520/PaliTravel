@@ -71,7 +71,9 @@ namespace Infrastructure.Migrations
 
                     b.HasKey("RoomId");
 
-                    b.ToView("AvailableRooms");
+                    b.ToTable((string)null);
+
+                    b.ToView("AvailableRooms", (string)null);
                 });
 
             modelBuilder.Entity("Infrastructure.Model.City", b =>
@@ -100,7 +102,7 @@ namespace Infrastructure.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("City");
+                    b.ToTable("City", (string)null);
                 });
 
             modelBuilder.Entity("Infrastructure.Model.Confirmation", b =>
@@ -126,7 +128,7 @@ namespace Infrastructure.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Confirmation");
+                    b.ToTable("Confirmation", (string)null);
                 });
 
             modelBuilder.Entity("Infrastructure.Model.Deal", b =>
@@ -155,7 +157,7 @@ namespace Infrastructure.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Deal");
+                    b.ToTable("Deal", (string)null);
                 });
 
             modelBuilder.Entity("Infrastructure.Model.Hotel", b =>
@@ -192,7 +194,7 @@ namespace Infrastructure.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Hotel");
+                    b.ToTable("Hotel", (string)null);
                 });
 
             modelBuilder.Entity("Infrastructure.Model.Reservation", b =>
@@ -221,7 +223,7 @@ namespace Infrastructure.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Reservation");
+                    b.ToTable("Reservation", (string)null);
                 });
 
             modelBuilder.Entity("Infrastructure.Model.Room", b =>
@@ -257,7 +259,7 @@ namespace Infrastructure.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Room");
+                    b.ToTable("Room", (string)null);
                 });
 
             modelBuilder.Entity("Infrastructure.Model.User", b =>
@@ -288,7 +290,7 @@ namespace Infrastructure.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Users");
+                    b.ToTable("Users", (string)null);
                 });
 #pragma warning restore 612, 618
         }

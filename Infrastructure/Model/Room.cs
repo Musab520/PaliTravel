@@ -21,7 +21,7 @@ public class Room
 
     public int AdultCapacity { get; set; } = 3;
 
-    public int ChildCapacity { get; set; } = 2;
+    public int ChildCapacity { get; set; } = 0;
 
     [Required]
     public decimal Price { get; set; }
