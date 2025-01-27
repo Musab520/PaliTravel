@@ -1,6 +1,6 @@
 using AutoMapper;
 using Domain.IRepository;
-using Domain.Model;
+using Domain.SieveModel;
 using Infrastructure.Mapper;
 using Infrastructure.Model;
 using Microsoft.CodeAnalysis;

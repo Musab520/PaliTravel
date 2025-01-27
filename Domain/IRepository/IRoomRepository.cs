@@ -1,4 +1,4 @@
-using Domain.Model;
+using Domain.SieveModel;
 
 namespace Domain.IRepository;
 
@@ -9,5 +9,5 @@ public interface IRoomRepository
     void Delete(RoomModel room);
     Task<RoomModel?> GetById(Guid id);
     
-    Task<List<AvailableRoomModel?>> GetAvailableRoomsAsync(AvailableRoomSieveModel sieveModel);
+    Task<List<AvailableRoomModel?>> GetAvailableRoomsAsync();
 }

@@ -1,4 +1,4 @@
-using Domain.Model;
+using Domain.SieveModel;
 using Riok.Mapperly.Abstractions;
 using Infrastructure.Model;
 
@@ -11,6 +11,6 @@ public partial class ModelToAvailableRoomMapper
 
     public partial AvailableRoomModel MapToModel(AvailableRoom room);
     
-    public partial List<AvailableRoomModel?> MapToModelList(List<AvailableRoom?> room);
+    public partial List<AvailableRoomModel?> MapToModelList(List<AvailableRoom> room);
 
 }

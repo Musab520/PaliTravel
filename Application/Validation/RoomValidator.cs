@@ -1,5 +1,5 @@
 using Domain.Enum;
-using Domain.Model;
+using Domain.SieveModel;
 using FluentValidation;
 
 namespace Application.Validation;

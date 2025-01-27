@@ -1,7 +1,7 @@
 using Application.DTOModels.City;
 using Application.Mapper;
 using Domain.IService;
-using Domain.Model;
+using Domain.SieveModel;
 using FluentValidation;
 using Microsoft.AspNetCore.Mvc;
 

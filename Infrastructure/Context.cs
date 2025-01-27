@@ -1,3 +1,4 @@
+using Domain.SieveModel;
 using Infrastructure.Model;
 using Microsoft.EntityFrameworkCore;
 namespace Infrastructure;
@@ -26,10 +27,8 @@ public class Context : DbContext
         }
     }
     
-    // protected override void OnModelCreating(ModelBuilder modelBuilder)
-    // {
-    //     
-    //
-    //     base.OnModelCreating(modelBuilder);
-    // }
+    protected override void OnModelCreating(ModelBuilder modelBuilder)
+    {
+        modelBuilder.Entity<AvailableRoom>().ToView("AvailableRooms");
+    }
 }

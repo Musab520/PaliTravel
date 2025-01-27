@@ -1,6 +1,6 @@
 using System;
 
-namespace Domain.Model;
+namespace Domain.SieveModel;
 
 public class AvailableRoomModel
 {

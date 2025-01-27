@@ -1,4 +1,4 @@
-namespace Domain.Model;
+namespace Domain.SieveModel;
 
 public class ReservationModel
 {

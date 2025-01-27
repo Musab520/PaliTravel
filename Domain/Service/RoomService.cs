@@ -1,17 +1,21 @@
 
 using Domain.IRepository;
-using Domain.Model;
+using Domain.SieveModel;
 using Domain.IService;
+using Sieve.Services;
 
 namespace Domain.Service;
 
 public class RoomService : IRoomService
 {
     private readonly IRoomRepository _roomRepository;
+    private readonly SieveProcessor _sieveProcessor;
 
-    public RoomService(IRoomRepository roomRepository)
+
+    public RoomService(IRoomRepository roomRepository, SieveProcessor sieveProcessor)
     {
         _roomRepository = roomRepository ?? throw new ArgumentNullException(nameof(roomRepository));
+        _sieveProcessor = sieveProcessor ?? throw new ArgumentNullException(nameof(sieveProcessor));
     }
     
     public async Task<RoomModel?> Insert(RoomModel roomModel)
@@ -36,6 +40,10 @@ public class RoomService : IRoomService
 
     public async Task<List<AvailableRoomModel?>> GetAvailableRoomsAsync(AvailableRoomSieveModel availableRoomSieveModel)
     {
-        return await _roomRepository.GetAvailableRoomsAsync(availableRoomSieveModel);
+        List<AvailableRoomModel?> availableRoomModels = await _roomRepository.GetAvailableRoomsAsync();
+        IQueryable<AvailableRoomModel?> query = availableRoomModels.AsQueryable();
+        query = _sieveProcessor.Apply(availableRoomSieveModel, query);
+        
+        return query.ToList();
     }
 }

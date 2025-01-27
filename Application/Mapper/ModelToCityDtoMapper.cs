@@ -1,5 +1,5 @@
 using Application.DTOModels.City;
-using Domain.Model;
+using Domain.SieveModel;
 using Riok.Mapperly.Abstractions;
 namespace Application.Mapper;
 

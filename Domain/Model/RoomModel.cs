@@ -1,6 +1,6 @@
 using Domain.Enum;
 
-namespace Domain.Model;
+namespace Domain.SieveModel;
 
 public class RoomModel
 {

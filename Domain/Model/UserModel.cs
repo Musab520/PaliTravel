@@ -1,7 +1,7 @@
 using System.ComponentModel.DataAnnotations;
 using Domain.Enum;
 
-namespace Domain.Model;
+namespace Domain.SieveModel;
 
 public class UserModel
 {

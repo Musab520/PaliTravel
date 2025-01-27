@@ -2,9 +2,9 @@ using Sieve.Attributes;
 using System;
 using Sieve.Models;
 
-namespace Domain.Model
+namespace Domain.SieveModel
 {
-    public class AvailableRoomSieveModel : SieveModel
+    public class AvailableRoomSieveModel : Sieve.Models.SieveModel
     {
         [Sieve(CanFilter = true, CanSort = true)]
         public string HotelName { get; set; } = string.Empty;

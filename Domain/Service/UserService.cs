@@ -1,6 +1,6 @@
 
 using Domain.IRepository;
-using Domain.Model;
+using Domain.SieveModel;
 using Domain.IService;
 
 namespace Domain.Service;

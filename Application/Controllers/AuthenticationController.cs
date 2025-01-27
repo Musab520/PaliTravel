@@ -4,7 +4,7 @@ using System.Text;
 using Domain.IService;
 using Application.Requests;
 using Application.Responses;
-using Domain.Model;
+using Domain.SieveModel;
 using FluentValidation;
 using FluentValidation.Results;
 using Microsoft.AspNetCore.Identity;

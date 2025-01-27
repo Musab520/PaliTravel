@@ -1,4 +1,4 @@
-using Domain.Model;
+using Domain.SieveModel;
 
 namespace Domain.IService;
 

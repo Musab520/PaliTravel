@@ -1,4 +1,4 @@
-using Domain.Model;
+using Domain.SieveModel;
 using Riok.Mapperly.Abstractions;
 using Application.DTOModels;
 using Application.DTOModels.User;
