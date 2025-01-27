@@ -3,6 +3,7 @@ using Domain.SieveModel;
 using Infrastructure.Mapper;
 using Infrastructure.Model;
 using Microsoft.EntityFrameworkCore;
+using Sieve.Models;
 using Sieve.Services;
 
 namespace Infrastructure.Repository;
@@ -54,7 +55,7 @@ public class RoomRepository : IRoomRepository
         return room;
     }
 
-    public async Task<List<AvailableRoomModel?>> GetAvailableRoomsAsync(AvailableRoomSieveModel availableRoomSieveModel)
+    public async Task<List<AvailableRoomModel?>> GetAvailableRoomsAsync(SieveModel availableRoomSieveModel)
     {
         IQueryable<AvailableRoom> query = _roomContext.AvailableRooms.AsNoTracking();
         query = _sieveProcessor.Apply(availableRoomSieveModel, query);

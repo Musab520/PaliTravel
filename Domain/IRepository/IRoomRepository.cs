@@ -9,5 +9,5 @@ public interface IRoomRepository
     void Delete(RoomModel room);
     Task<RoomModel?> GetById(Guid id);
     
-    Task<List<AvailableRoomModel?>> GetAvailableRoomsAsync(AvailableRoomSieveModel availableRoomSieveModel);
+    Task<List<AvailableRoomModel?>> GetAvailableRoomsAsync(Sieve.Models.SieveModel availableRoomSieveModel);
 }

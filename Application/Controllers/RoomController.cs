@@ -5,6 +5,7 @@ using Domain.IService;
 using Domain.SieveModel;
 using FluentValidation;
 using Microsoft.AspNetCore.Mvc;
+using Sieve.Models;
 
 namespace Application.Controllers;
 
@@ -43,7 +44,7 @@ public class RoomController : Controller
     }
     
     [HttpGet("available")]
-    public async Task<IActionResult> GetAvailableRooms([FromQuery] AvailableRoomSieveModel sieveModel)
+    public async Task<IActionResult> GetAvailableRooms([FromQuery] SieveModel sieveModel)
     {
         List<AvailableRoomModel?> rooms = await _roomService.GetAvailableRoomsAsync(sieveModel);
         if (!rooms.Any()) {

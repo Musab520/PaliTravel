@@ -36,7 +36,7 @@ public class RoomService : IRoomService
         throw new NotImplementedException();
     }
 
-    public async Task<List<AvailableRoomModel?>> GetAvailableRoomsAsync(AvailableRoomSieveModel availableRoomSieveModel)
+    public async Task<List<AvailableRoomModel?>> GetAvailableRoomsAsync(Sieve.Models.SieveModel availableRoomSieveModel)
     {
         return await _roomRepository.GetAvailableRoomsAsync(availableRoomSieveModel);
     }
