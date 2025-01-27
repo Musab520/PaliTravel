@@ -12,10 +12,12 @@ public class RoomRepository : IRoomRepository
     private readonly Context _roomContext;
     private readonly ModelToRoomMapper _mapper;
     private readonly ModelToAvailableRoomMapper _mapperAvailableRoom;
+    private readonly SieveProcessor _sieveProcessor;
     public RoomRepository(Context context, ModelToRoomMapper mapper, SieveProcessor sieveProcessor, ModelToAvailableRoomMapper mapperAvailableRoom)
     {
         _roomContext = context ?? throw new ArgumentNullException(nameof(context));
         _mapper = mapper ?? throw new ArgumentNullException(nameof(mapper));
+        _sieveProcessor = sieveProcessor;
         _mapperAvailableRoom = mapperAvailableRoom;
     }
 
@@ -52,10 +54,11 @@ public class RoomRepository : IRoomRepository
         return room;
     }
 
-    public async Task<List<AvailableRoomModel?>> GetAvailableRoomsAsync()
+    public async Task<List<AvailableRoomModel?>> GetAvailableRoomsAsync(AvailableRoomSieveModel availableRoomSieveModel)
     {
-        List<AvailableRoom> list = await _roomContext.AvailableRooms.ToListAsync();
-        List<AvailableRoomModel?> modelList = _mapperAvailableRoom.MapToModelList(list);
+        IQueryable<AvailableRoom> query = _roomContext.AvailableRooms.AsNoTracking();
+        query = _sieveProcessor.Apply(availableRoomSieveModel, query);
+        List<AvailableRoomModel?> modelList = _mapperAvailableRoom.MapToModelList(await query.ToListAsync());
 
         return modelList;
     }
